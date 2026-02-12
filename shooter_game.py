@@ -6,15 +6,15 @@ win_width = 700
 win_height = 500
 win = display.set_mode((win_width, win_height))
 
-backgroundd = transform.scale(image.load('city.jpg'), (win_width, win_height))
+backgroundd = transform.scale(image.load('assets/pics/galaxy.jpg'), (win_width, win_height))
 
 mixer.init()
-mixer.music.load('city.mp3')
+mixer.music.load('assets/sounds/city.mp3')
 mixer.music.play()
 
-wind_s = mixer.Sound('wind.wav')
+wind_s = mixer.Sound('assets/sounds/wind.wav')
 
-firere = mixer.Sound('hit.mp3')
+firere = mixer.Sound('assets/sounds/fire.ogg')
 
 bullets = sprite.Group()
 
@@ -78,7 +78,7 @@ class Player(GameSprite):
 
 
     def fire(self):
-        bullet = Bullet(self.rect.centerx, self.rect.top, 15, 'bullet.png', 7, 10)
+        bullet = Bullet(self.rect.centerx, self.rect.top, 15, 'assets/pics/bullet.png', 7, 10)
         bullets.add(bullet)
 
 class Enemy(GameSprite):
@@ -114,14 +114,14 @@ class Bullet(GameSprite):
 
         
 
-space_ship = Player(285, 420, 9, 'rocket.png', 65, 80)
+space_ship = Player(285, 420, 9, 'assets/pics/rocket.png', 65, 80)
 angry_dudes = sprite.Group()
 for i in range(5):
-    very_evil_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'ufo.png', 80, 50)
+    very_evil_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'assets/pics/ufo.png', 80, 50)
     angry_dudes.add(very_evil_dude)
 asters = sprite.Group()
 for i in range(3):
-    aster = Asters(randint(50, win_width - 50), 0, randint(1, 3), 'asteroid.png', 80, 50)
+    aster = Asters(randint(50, win_width - 50), 0, randint(1, 3), 'assets/pics/asteroid.png', 80, 50)
     asters.add(aster)
 
 game = True
@@ -159,7 +159,7 @@ while game:
         win.blit(mrt, (5, 70))
         sprites_list = sprite.groupcollide(angry_dudes, bullets, True, True)
         for e in sprites_list:
-            new_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'ufo.png', 80, 50)
+            new_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'assets/pics/ufo.png', 80, 50)
             angry_dudes.add(new_dude)
             score += 1
         
@@ -189,7 +189,7 @@ while game:
             e.kill()
         time.delay(2000)
         for i in range(5):
-            very_evil_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'ufo.png', 80, 50)
+            very_evil_dude = Enemy(randint(50, win_width - 50), 0, randint(1, 3), 'assets/pics/ufo.png', 80, 50)
             angry_dudes.add(very_evil_dude)
         score = 0
         lost = 0
